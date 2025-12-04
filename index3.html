@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marvelous Games | Marvelbyte</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Poppins', 'sans-serif'] },
+                    colors: { glass: 'rgba(17, 24, 39, 0.7)' }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            background-color: #0f172a; /* Keep a dark base color */
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        /* --- THE NEW BACKGROUND LOGIC --- */
+        .aurora-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            overflow: hidden;
+            background: #0f172a;
+        }
+
+        .blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px); /* This makes it soft and dreamy */
+            opacity: 0.6;
+            animation: float 20s infinite alternate cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Blob 1: Purple/Violet */
+        .blob-1 {
+            top: -10%;
+            left: -10%;
+            width: 50vw;
+            height: 50vw;
+            background: #7c3aed;
+            animation-delay: 0s;
+        }
+
+        /* Blob 2: Blue/Cyan */
+        .blob-2 {
+            bottom: -10%;
+            right: -10%;
+            width: 60vw;
+            height: 60vw;
+            background: #2563eb;
+            animation-delay: -5s;
+        }
+
+        /* Blob 3: Pink/Rose Accent */
+        .blob-3 {
+            top: 40%;
+            left: 40%;
+            width: 40vw;
+            height: 40vw;
+            background: #db2777;
+            animation-delay: -10s;
+            opacity: 0.4;
+        }
+
+        @keyframes float {
+            0% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(30px, -50px) scale(1.1); }
+            66% { transform: translate(-20px, 20px) scale(0.9); }
+            100% { transform: translate(0, 0) scale(1); }
+        }
+
+        /* --- UI COMPONENTS --- */
+        .glass-card {
+            background: rgba(17, 24, 39, 0.6);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .glass-card:hover {
+            background: rgba(30, 41, 59, 0.7);
+            border-color: rgba(139, 92, 246, 0.4);
+            transform: translateY(-4px);
+        }
+
+        /* Profile Ring */
+        .profile-ring {
+            position: absolute;
+            inset: -3px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #ec4899, #8b5cf6, #3b82f6);
+            z-index: -1;
+            animation: spin 10s linear infinite;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col items-center p-4 sm:p-8">
+
+    <div class="aurora-container">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <main class="w-full max-w-2xl z-10">
+        
+        <header class="text-center mb-10 mt-6">
+            <div class="relative inline-block mb-4 group">
+                <div class="profile-ring blur-sm"></div>
+                <div class="w-32 h-32 rounded-full overflow-hidden border-2 border-slate-700 bg-slate-900 relative z-10">
+                    <img src="https://i.ibb.co/fzt0FcWj/marvel.jpg" alt="Profile" class="w-full h-full object-cover">
+                </div>
+            </div>
+            
+            <h1 class="text-4xl font-bold mb-1 tracking-tight text-white">Marvelous</h1>
+            <p class="text-slate-300 font-medium">Game Developer • Marvelbyte</p>
+            
+            <div class="flex justify-center gap-4 mt-6">
+                <a href="#" class="w-10 h-10 rounded-full bg-slate-800/80 backdrop-blur-md flex items-center justify-center hover:bg-white hover:text-black transition-all">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="#" class="w-10 h-10 rounded-full bg-slate-800/80 backdrop-blur-md flex items-center justify-center hover:bg-blue-400 transition-all">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="#" class="w-10 h-10 rounded-full bg-slate-800/80 backdrop-blur-md flex items-center justify-center hover:bg-red-500 transition-all">
+                    <i class="fab fa-youtube"></i>
+                </a>
+            </div>
+        </header>
+
+        <section class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
+            <a href="#" class="glass-card rounded-xl p-4 flex items-center group">
+                <div class="w-12 h-12 rounded-lg bg-indigo-600 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                    <i class="fas fa-gamepad text-white"></i>
+                </div>
+                <div class="ml-4 flex-1">
+                    <h3 class="font-semibold text-slate-100 group-hover:text-purple-300 transition-colors">Retro Ping Pong</h3>
+                    <p class="text-slate-400 text-xs">Arcade • WebGL</p>
+                </div>
+                <i class="fas fa-chevron-right text-slate-600 group-hover:text-white transition-colors"></i>
+            </a>
+
+            <a href="#" class="glass-card rounded-xl p-4 flex items-center group">
+                <div class="w-12 h-12 rounded-lg bg-rose-600 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                    <i class="fas fa-dragon text-white"></i>
+                </div>
+                <div class="ml-4 flex-1">
+                    <h3 class="font-semibold text-slate-100 group-hover:text-purple-300 transition-colors">Dragon Quest</h3>
+                    <p class="text-slate-400 text-xs">RPG • Adventure</p>
+                </div>
+                <i class="fas fa-chevron-right text-slate-600 group-hover:text-white transition-colors"></i>
+            </a>
+
+            <a href="#" class="glass-card rounded-xl p-4 flex items-center group">
+                <div class="w-12 h-12 rounded-lg bg-blue-600 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                    <i class="fas fa-car text-white"></i>
+                </div>
+                <div class="ml-4 flex-1">
+                    <h3 class="font-semibold text-slate-100 group-hover:text-purple-300 transition-colors">Neon Racing</h3>
+                    <p class="text-slate-400 text-xs">Racing • 3D</p>
+                </div>
+                <i class="fas fa-chevron-right text-slate-600 group-hover:text-white transition-colors"></i>
+            </a>
+
+            <a href="#" class="glass-card rounded-xl p-4 flex items-center group">
+                <div class="w-12 h-12 rounded-lg bg-emerald-600 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                    <i class="fas fa-puzzle-piece text-white"></i>
+                </div>
+                <div class="ml-4 flex-1">
+                    <h3 class="font-semibold text-slate-100 group-hover:text-purple-300 transition-colors">Mind Blocks</h3>
+                    <p class="text-slate-400 text-xs">Puzzle • Logic</p>
+                </div>
+                <i class="fas fa-chevron-right text-slate-600 group-hover:text-white transition-colors"></i>
+            </a>
+        </section>
+
+        <a href="mailto:contact@marvelbyte.com" class="block w-full glass-card text-center py-4 rounded-xl hover:bg-white hover:text-slate-900 transition-colors font-semibold">
+            Get In Touch
+        </a>
+        
+        <footer class="text-center mt-8 pb-8 text-slate-500 text-sm">
+            &copy; 2025 Marvelbyte Games
+        </footer>
+
+    </main>
+</body>
+</html>
