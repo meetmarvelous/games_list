@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marvelous Games | Marvelbyte</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        body {
+            overflow-x: hidden;
+        }
+        
+        .background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: linear-gradient(-45deg, 
+                #ff6b6b, #ffa36c, #ffde7d, #a3de83, 
+                #6a98f0, #9d65c9, #ff6b9d, #6b48ff);
+            background-size: 400% 400%;
+            animation: gradient 20s ease infinite;
+        }
+        
+        @keyframes gradient {
+            0% {
+                background-position: 0% 50%;
+            }
+            25% {
+                background-position: 50% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            75% {
+                background-position: 50% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+        
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0% { transform: translate(0, 0px); }
+            50% { transform: translate(0, 15px); }
+            100% { transform: translate(0, -0px); }
+        }
+        
+        .card {
+            backdrop-filter: blur(10px);
+            background-color: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .link-card {
+            transition: all 0.3s ease;
+        }
+        
+        .link-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4);
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(255, 255, 255, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+            }
+        }
+        
+        /* Text shadow for better readability */
+        .text-shadow {
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.5);
+        }
+        
+        .game-icon {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex items-center justify-center p-4">
+    <!-- Animated Background -->
+    <div class="background"></div>
+    
+    <!-- Main Content -->
+    <div class="max-w-md w-full mx-auto z-10">
+        <!-- Developer Profile Section -->
+        <div class="text-center mb-8">
+            <div class="relative inline-block mb-4">
+                <div class="w-32 h-32 rounded-full overflow-hidden border-4 border-white shadow-lg mx-auto pulse">
+                    <img src="https://i.ibb.co/fzt0FcWj/marvel.jpg" 
+                         alt="Marvelous" class="w-full h-full object-cover">
+                </div>
+                <div class="absolute -bottom-2 -right-2 bg-green-500 w-6 h-6 rounded-full border-2 border-white shadow-md"></div>
+            </div>
+            <h1 class="text-3xl font-bold text-white mb-2 text-shadow">Marvelous</h1>
+            <p class="text-white/80 mb-2 text-shadow">Game Developer • Marvelbyte</p>
+            <p class="text-white/60 text-sm mb-6 max-w-xs mx-auto text-shadow">Creating immersive gaming experiences</p>
+            
+            <!-- Developer Stats -->
+            <div class="flex justify-center space-x-6 mb-6">
+                <div class="text-center">
+                    <p class="text-white font-bold text-xl text-shadow">10</p>
+                    <p class="text-white/70 text-sm text-shadow">Games</p>
+                </div>
+                <div class="text-center">
+                    <p class="text-white font-bold text-xl text-shadow">5</p>
+                    <p class="text-white/70 text-sm text-shadow">Years</p>
+                </div>
+                <div class="text-center">
+                    <p class="text-white font-bold text-xl text-shadow">4.8</p>
+                    <p class="text-white/70 text-sm text-shadow">Rating</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Social Links -->
+        <div class="flex justify-center space-x-4 mb-8">
+            <a href="https://github.com/meetmarvelous" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-white/20 transition shadow-md">
+                <i class="fab fa-github"></i>
+            </a>
+            <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-white/20 transition shadow-md">
+                <i class="fab fa-twitter"></i>
+            </a>
+            <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-white/20 transition shadow-md">
+                <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-white/20 transition shadow-md">
+                <i class="fab fa-youtube"></i>
+            </a>
+        </div>
+        
+        <!-- Games Section -->
+        <div class="space-y-4 mb-8">
+            <h2 class="text-white text-xl font-bold mb-4 text-shadow text-center">My Games</h2>
+            
+            <div class="card rounded-2xl p-5 link-card">
+                <a href="#" class="flex items-center text-white hover:text-white/90">
+                    <div class="w-12 h-12 rounded-full game-icon flex items-center justify-center mr-4 shadow-md">
+                        <i class="fas fa-gamepad text-white text-xl"></i>
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="font-semibold text-shadow">Game 1</h3>
+                        <p class="text-white/70 text-sm text-shadow">Retro Ping Pong</p>
+                    </div>
+                    <div class="ml-2">
+                        <i class="fas fa-chevron-right text-white/50"></i>
+                    </div>
+                </a>
+            </div>
+            
+            <div class="card rounded-2xl p-5 link-card">
+                <a href="#" class="flex items-center text-white hover:text-white/90">
+                    <div class="w-12 h-12 rounded-full game-icon flex items-center justify-center mr-4 shadow-md">
+                        <i class="fas fa-dragon text-white text-xl"></i>
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="font-semibold text-shadow">Game 2</h3>
+                        <p class="text-white/70 text-sm text-shadow">Color Matching</p>
+                    </div>
+                    <div class="ml-2">
+                        <i class="fas fa-chevron-right text-white/50"></i>
+                    </div>
+                </a>
+            </div>
+            
+            <div class="card rounded-2xl p-5 link-card">
+                <a href="#" class="flex items-center text-white hover:text-white/90">
+                    <div class="w-12 h-12 rounded-full game-icon flex items-center justify-center mr-4 shadow-md">
+                        <i class="fas fa-car text-white text-xl"></i>
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="font-semibold text-shadow">Game 3</h3>
+                        <p class="text-white/70 text-sm text-shadow">Racing</p>
+                    </div>
+                    <div class="ml-2">
+                        <i class="fas fa-chevron-right text-white/50"></i>
+                    </div>
+                </a>
+            </div>
+            
+            <div class="card rounded-2xl p-5 link-card">
+                <a href="#" class="flex items-center text-white hover:text-white/90">
+                    <div class="w-12 h-12 rounded-full game-icon flex items-center justify-center mr-4 shadow-md">
+                        <i class="fas fa-puzzle-piece text-white text-xl"></i>
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="font-semibold text-shadow">Game 4</h3>
+                        <p class="text-white/70 text-sm text-shadow">Puzzle</p>
+                    </div>
+                    <div class="ml-2">
+                        <i class="fas fa-chevron-right text-white/50"></i>
+                    </div>
+                </a>
+            </div>
+            
+            <div class="card rounded-2xl p-5 link-card">
+                <a href="#" class="flex items-center text-white hover:text-white/90">
+                    <div class="w-12 h-12 rounded-full game-icon flex items-center justify-center mr-4 shadow-md">
+                        <i class="fas fa-robot text-white text-xl"></i>
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="font-semibold text-shadow">Game 5</h3>
+                        <p class="text-white/70 text-sm text-shadow">Sci-Fi Strategy</p>
+                    </div>
+                    <div class="ml-2">
+                        <i class="fas fa-chevron-right text-white/50"></i>
+                    </div>
+                </a>
+            </div>
+            
+            <div class="card rounded-2xl p-5 link-card">
+                <a href="#" class="flex items-center text-white hover:text-white/90">
+                    <div class="w-12 h-12 rounded-full game-icon flex items-center justify-center mr-4 shadow-md">
+                        <i class="fas fa-ghost text-white text-xl"></i>
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="font-semibold text-shadow">Game 6</h3>
+                        <p class="text-white/70 text-sm text-shadow">Horror Survival</p>
+                    </div>
+                    <div class="ml-2">
+                        <i class="fas fa-chevron-right text-white/50"></i>
+                    </div>
+                </a>
+            </div>
+            
+            <div class="card rounded-2xl p-5 link-card">
+                <a href="#" class="flex items-center text-white hover:text-white/90">
+                    <div class="w-12 h-12 rounded-full game-icon flex items-center justify-center mr-4 shadow-md">
+                        <i class="fas fa-basketball-ball text-white text-xl"></i>
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="font-semibold text-shadow">Game 7</h3>
+                        <p class="text-white/70 text-sm text-shadow">Sports</p>
+                    </div>
+                    <div class="ml-2">
+                        <i class="fas fa-chevron-right text-white/50"></i>
+                    </div>
+                </a>
+            </div>
+            
+            <div class="card rounded-2xl p-5 link-card">
+                <a href="#" class="flex items-center text-white hover:text-white/90">
+                    <div class="w-12 h-12 rounded-full game-icon flex items-center justify-center mr-4 shadow-md">
+                        <i class="fas fa-chess text-white text-xl"></i>
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="font-semibold text-shadow">Game 8</h3>
+                        <p class="text-white/70 text-sm text-shadow">Strategy Board</p>
+                    </div>
+                    <div class="ml-2">
+                        <i class="fas fa-chevron-right text-white/50"></i>
+                    </div>
+                </a>
+            </div>
+            
+            <div class="card rounded-2xl p-5 link-card">
+                <a href="#" class="flex items-center text-white hover:text-white/90">
+                    <div class="w-12 h-12 rounded-full game-icon flex items-center justify-center mr-4 shadow-md">
+                        <i class="fas fa-music text-white text-xl"></i>
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="font-semibold text-shadow">Game 9</h3>
+                        <p class="text-white/70 text-sm text-shadow">Rhythm & Music</p>
+                    </div>
+                    <div class="ml-2">
+                        <i class="fas fa-chevron-right text-white/50"></i>
+                    </div>
+                </a>
+            </div>
+            
+            <div class="card rounded-2xl p-5 link-card">
+                <a href="#" class="flex items-center text-white hover:text-white/90">
+                    <div class="w-12 h-12 rounded-full game-icon flex items-center justify-center mr-4 shadow-md">
+                        <i class="fas fa-medal text-white text-xl"></i>
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="font-semibold text-shadow">Game 10</h3>
+                        <p class="text-white/70 text-sm text-shadow">Competitive eSports</p>
+                    </div>
+                    <div class="ml-2">
+                        <i class="fas fa-chevron-right text-white/50"></i>
+                    </div>
+                </a>
+            </div>
+        </div>
+        
+        <!-- Contact Section -->
+        <div class="card rounded-2xl p-5 mb-8">
+            <h3 class="text-white font-semibold text-lg mb-3 text-shadow">Get In Touch</h3>
+            <p class="text-white/70 text-sm mb-4 text-shadow">Interested in collaboration or have questions about my games?</p>
+            <div class="flex flex-col sm:flex-row gap-2">
+                <a href="mailto:contact@marvelbyte.com" class="flex-grow bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-white text-center hover:bg-white/20 transition text-shadow">
+                    <i class="fas fa-envelope mr-2"></i>Email Me
+                </a>
+                <a href="https://github.com/meetmarvelous" class="bg-white text-purple-600 font-semibold px-4 py-3 rounded-xl hover:bg-white/90 transition whitespace-nowrap shadow-md text-center">
+                    <i class="fab fa-github mr-2"></i>GitHub
+                </a>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <div class="text-center">
+            <p class="text-white/50 text-sm text-shadow">© 2023 Marvelbyte. All rights reserved.</p>
+            <p class="text-white/40 text-xs mt-1 text-shadow">www.github.com/meetmarvelous</p>
+        </div>
+    </div>
+
+    <script>
+        // Add floating animation to profile image
+        document.addEventListener('DOMContentLoaded', function() {
+            const profileImage = document.querySelector('.rounded-full');
+            profileImage.classList.add('floating');
+            
+            // Add click effects to game cards
+            const gameCards = document.querySelectorAll('.link-card');
+            gameCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    this.style.transform = 'scale(0.98)';
+                    setTimeout(() => {
+                        this.style.transform = '';
+                    }, 150);
+                });
+            });
+            
+            // Add subtle parallax effect to background
+            document.addEventListener('mousemove', function(e) {
+                const background = document.querySelector('.background');
+                const x = e.clientX / window.innerWidth;
+                const y = e.clientY / window.innerHeight;
+                
+                background.style.transform = `translate(${x * 10}px, ${y * 10}px)`;
+            });
+        });
+    </script>
+</body>
+</html>
